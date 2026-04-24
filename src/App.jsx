@@ -4,6 +4,8 @@ import AppLayout from "./ui/AppLayout";
 import Menu from "./features/menu/Menu";
 import Cart from "./features/cart/cart";
 import CreateOrder from "./features/order/CreateOrder";
+import About from "./ui/About";
+import Contact from "./ui/Contact";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -20,6 +22,14 @@ function App() {
 				{
 					path: "/cart",
 					element: <Cart />,
+				},
+				{
+					path: "/about",
+					element: <About />,
+				},
+				{
+					path: "/contact",
+					element: <Contact />,
 				},
 				{
 					path: "/order/new",

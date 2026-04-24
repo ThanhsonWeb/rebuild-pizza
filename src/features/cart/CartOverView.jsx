@@ -1,6 +1,6 @@
 function CartOverView() {
    return (
-      <div className="bg-amber-100">  
+      <div className=" py-10 flex items-center justify-evenly">  
        <p>  Cart Over View</p>
       </div>
    )

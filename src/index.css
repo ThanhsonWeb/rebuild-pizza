@@ -1,6 +1,6 @@
 @import "tailwindcss";
 body {
-	background: #515050;
+	background: bg-amber-50;
 }
 
 #root {
