@@ -1,7 +1,7 @@
 import pizza2 from "../assets/img/pizza2.png";
 import pizza3 from "../assets/img/pizza3.png";
 import { Link } from "react-router-dom";
-
+import Footer from "./Footer";
 function Home() {
 	return (
 		<div>
@@ -14,6 +14,8 @@ function Home() {
 				</Link>
 			</div>
 			<img src={pizza3} alt="pizza" className="w-full" />
+
+			<Footer />
 		</div>
 	);
 }

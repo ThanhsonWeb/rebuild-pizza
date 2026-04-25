@@ -8,10 +8,12 @@ import About from "./ui/About";
 import Contact from "./ui/Contact";
 import OrderPage from "./features/order/OrderPage";
 import { loader as menuLoader } from "./features/menu/Menu";
+import Error from "./ui/Error";
 function App() {
 	const router = createBrowserRouter([
 		{
 			element: <AppLayout />,
+			errorElement: <Error />,
 			children: [
 				{
 					path: "/",

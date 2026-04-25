@@ -1,3 +1,5 @@
+import Button from "../../ui/Button";
+
 function MenuItem({ pizza }) {
 	const { imageUrl: url, name, ingredients, unitPrice, soldOut } = pizza;
 
@@ -11,12 +13,10 @@ function MenuItem({ pizza }) {
 			<div className="flex flex-col">
 				<h3 className=" font-semibold text-orange-400 mb-4">{name}</h3>
 				<p className="italic">{ingredients.join(" ,")}</p>
-				<span className="font-semibold text-orange-700 text-xl mt-4">
+				<span className="font-semibold text-orange-700 text-xl my-4">
 					{soldOut ? "Sold out" : "$" + unitPrice}
 				</span>
-			<button className="mt-4 text-white font-semibold  bg-orange-600 py-1 px-2 rounded-full">
-				ADD TO CART
-			</button>
+			<Button>ADD TO CART</Button>
 			</div>
 		</div>
 	);
