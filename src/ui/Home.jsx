@@ -6,7 +6,7 @@ function Home() {
 	return (
 		<div>
 			<div className="relative">
-				<Link to="/menu">
+				<Link to="/orderPage">
 					<img src={pizza2} alt="pizza" className="w-full" />
 					<button className="px-5 py-3 rounded-full text-white  text-xl font-semibold bg-amber-700 cursor-pointer absolute bottom-[0rem] ">
 						Order now

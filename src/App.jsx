@@ -6,6 +6,7 @@ import Cart from "./features/cart/cart";
 import CreateOrder from "./features/order/CreateOrder";
 import About from "./ui/About";
 import Contact from "./ui/Contact";
+import OrderPage from "./features/order/OrderPage";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -14,6 +15,10 @@ function App() {
 				{
 					path: "/",
 					element: <Home />,
+				},
+				{
+					path: "/orderPage",
+					element: <OrderPage />,
 				},
 				{
 					path: "/menu",
@@ -41,7 +46,6 @@ function App() {
 				},
 			],
 		},
-		
 	]);
 
 	return <RouterProvider router={router} />;
