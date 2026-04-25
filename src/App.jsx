@@ -7,6 +7,7 @@ import CreateOrder from "./features/order/CreateOrder";
 import About from "./ui/About";
 import Contact from "./ui/Contact";
 import OrderPage from "./features/order/OrderPage";
+import { loader as menuLoader } from "./features/menu/Menu";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -23,6 +24,7 @@ function App() {
 				{
 					path: "/menu",
 					element: <Menu />,
+					loader: menuLoader,
 				},
 				{
 					path: "/cart",
