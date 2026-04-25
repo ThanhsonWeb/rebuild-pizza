@@ -1,16 +1,27 @@
 import pizza from "../assets/img/pizza.jpg";
-import {NavLink} from "react-router-dom";
+import { useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import Navigation from "./Navigation";
+import Sidebar from "./Sidebar";
 function Header() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
-		<div className=" px-5 py-10 flex items-center  ">
-			<img src={pizza} alt="Logo" className="h-20 rounded-full" />
-			<div className="ml-20">
-			   <nav className="flex items-center " >
-   				<NavLink to="/" ><span className="font-semibold text-xl text-amber-800 px-4 py-2" >Home</span></NavLink>
-   				<NavLink to="/menu" ><span className="font-semibold text-xl text-amber-800 px-4 py-2" >Menu</span></NavLink>
-   				<NavLink to="/about" ><span className="font-semibold text-xl text-amber-800 px-4 py-2" >About</span></NavLink>
-   				<NavLink to="/" ><span className="font-semibold text-xl text-amber-800 px-4 py-2" >Contact Us</span></NavLink>
-   			</nav>
+		<div className=" p-5 flex items-center ">
+			{/* sidebar */}
+			<button onClick={() => setIsOpen(!isOpen)}>
+				<Bars3Icon className=" md:hidden h-8 w-8 text-amber-800" />
+			</button>
+			{isOpen && <Sidebar setIsOpen={setIsOpen} />}
+
+			<img
+				src={pizza}
+				alt="Logo"
+				className=" mx-auto md:mx-0 h-20 rounded-full"
+			/>
+
+			<div className="ml-20 hidden md:block  ">
+				<Navigation />
 			</div>
 		</div>
 	);

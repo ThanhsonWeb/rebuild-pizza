@@ -25,7 +25,7 @@ function Footer() {
 				<p className="text-gray-600 ">
 					<span>Terms and Agreement</span> <span>Privacy Policy</span>
 					<br />
-					<p className="">@ 2026 Jony's Pizza</p>
+					<span className="">@ 2026 Jony's Pizza</span>
 				</p>
 			</div>
 		</div>
