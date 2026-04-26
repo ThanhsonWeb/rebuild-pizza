@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
-function Button({ children, to }) {
+function Button({ children, to, type = "primary" }) {
+	const base = " inline-block font-semibold rounded-full hover:scale-110  transition-all duration-400 cursor-pointer px-3 py-2";
+	const style = {
+		primary: "  text-white  bg-amber-700",
+		secondary: " text-white  bg-orange-500 ",
+		third : " bg-amber-50 border "
+	};
+	const className = `${base}  ${style[type]}`;
+
 	if (to) {
 		return (
 			<Link to={to}>
-				<button className=" text-white font-semibold  bg-orange-400 py-2 px-3 rounded-full">
-					{children}
-				</button>
+				<button className={className}>{children}</button>
 			</Link>
 		);
 	}
 
-	return (
-		<button className=" text-white font-semibold  bg-orange-600 py-1 px-2 rounded-full">
-			{children}
-		</button>
-	);
+	return <button className={className}>{children}</button>;
 }
 
 export default Button;

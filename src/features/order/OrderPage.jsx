@@ -34,7 +34,7 @@ function OrderPage() {
 
 			{username !== "" && (
 				<Link to="/menu">
-					<Button>Proceed to menu</Button>
+					<Button type="secondary" >Proceed to menu</Button>
 				</Link>
 			)}
 		</div>

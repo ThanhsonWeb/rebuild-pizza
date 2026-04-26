@@ -18,7 +18,7 @@ function Navigation() {
 						About
 					</span>
 				</NavLink>
-				<NavLink className=" link font-semibold text-xl text-amber-800 px-4 py-2 mt-5 " to="/">
+				<NavLink className=" link font-semibold text-xl text-amber-800 px-4 py-2 mt-5 " to="/contact">
 					<span >
 						Contact Us
 					</span>

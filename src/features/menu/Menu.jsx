@@ -15,7 +15,7 @@ function Menu() {
 					</h2>
 					<span>Hi !</span>
 				</div>
-				<ul className="grid  sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+				<ul className="grid  lg:grid-cols-3 md:grid-cols-2  sm:grid-cols-2 gap-4 mt-8">
 					{menu.map((pizza) => (
 						<MenuItem pizza={pizza} key={pizza.id} />
 					))}

@@ -1,4 +1,5 @@
 import pizza from "../assets/img/pizza.jpg";
+import Button from "./Button";
 function Footer() {
 	return (
 		<div className="bg-gray-300 py-10">
@@ -11,9 +12,8 @@ function Footer() {
 					placeholder="Enter your email..."
 				/>
             <br />
-				<button className="font-semibold px-3 py-2 rounded-full bg-amber-700 text-amber-50">
-					Subscribe
-				</button>
+				
+				<Button>Subscribe</Button>
 			</div>
 
 			<div className="mt-5 relative overflow ">

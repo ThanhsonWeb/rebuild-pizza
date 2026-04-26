@@ -1,16 +1,19 @@
 import pizza from "../assets/img/pizza.jpg";
 import { useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Navigation from "./Navigation";
 import Sidebar from "./Sidebar";
+import { useNavigate } from "react-router-dom";
 function Header() {
 	const [isOpen, setIsOpen] = useState(false);
 
+	const navigate = useNavigate();
+
 	return (
-		<div className=" p-5 flex items-center ">
+		<div className=" p-5 flex items-center justify-between ">
 			{/* sidebar */}
 			<button onClick={() => setIsOpen(!isOpen)}>
-				<Bars3Icon className=" md:hidden h-8 w-8 text-amber-800" />
+				<Bars3Icon className=" md:hidden h-12 w-12 text-amber-800" />
 			</button>
 			{isOpen && <Sidebar setIsOpen={setIsOpen} />}
 
@@ -23,6 +26,14 @@ function Header() {
 			<div className="ml-20 hidden md:block  ">
 				<Navigation />
 			</div>
+
+			{/* cart icon */}
+			<button
+				onClick={() => navigate("/cart")}
+				className="ml-auto p-2 hover:bg-orange-100 rounded-full"
+			>
+				<ShoppingCartIcon className="h-10 w-10 text-amber-800 mr-auto" />
+			</button>
 		</div>
 	);
 }
