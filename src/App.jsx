@@ -9,6 +9,8 @@ import Contact from "./ui/Contact";
 import OrderPage from "./features/order/OrderPage";
 import { loader as menuLoader } from "./features/menu/Menu";
 import Error from "./ui/Error";
+import { action as createOrderAction } from "./features/order/CreateOrder";
+import Order from "./features/order/Order";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -43,10 +45,11 @@ function App() {
 				{
 					path: "/order/new",
 					element: <CreateOrder />,
+					action: createOrderAction,
 				},
 				{
 					path: "/order/orderid",
-					element: <CreateOrder />,
+					element: <Order />,
 				},
 			],
 		},

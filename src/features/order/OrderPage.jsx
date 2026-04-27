@@ -1,13 +1,17 @@
-import { useState } from "react";
 import Button from "../../ui/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateName } from "../user/userSlice";
+import { useState } from "react";
 
 function OrderPage() {
 	const [username, setUsername] = useState("");
-	const navigate = useNavigate();
 
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	function handleSubmit(e) {
 		e.preventDefault();
+		dispatch(updateName(username));
 		navigate("/menu");
 	}
 
@@ -33,9 +37,9 @@ function OrderPage() {
 			</form>
 
 			{username !== "" && (
-				<Link to="/menu">
-					<Button type="secondary" >Proceed to menu</Button>
-				</Link>
+				<Button onClick={handleSubmit} type="secondary">
+					Proceed to menu
+				</Button>
 			)}
 		</div>
 	);
