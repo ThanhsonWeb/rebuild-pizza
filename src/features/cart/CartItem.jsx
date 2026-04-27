@@ -1,6 +1,7 @@
 import Button from "../../ui/Button";
 import { deleteItem } from "./cartSlice";
 import { useDispatch } from "react-redux";
+import UpdateItemQuantity from "./UpdateItemQuantity";
 
 function CartItem({ item }) {
 	const { name, quantity, unitPrice, pizzaId } = item;
@@ -13,6 +14,8 @@ function CartItem({ item }) {
 				{quantity} x {name}
 			</p>
 			<span>${unitPrice}.00</span>
+
+			<UpdateItemQuantity  id={pizzaId} quantity={quantity}/>
 
 			<Button onClick={() => dispatch(deleteItem(pizzaId))}>Delete</Button>
 		</div>

@@ -6,6 +6,8 @@ function MenuItem({ pizza }) {
 	const { imageUrl: url, name, ingredients, unitPrice, soldOut, id } = pizza;
 	console.log(pizza);
 
+	
+
 	const dispatch = useDispatch();
 	function handleAddToCart() {
 		const newItem = {
@@ -17,7 +19,6 @@ function MenuItem({ pizza }) {
 		};
 
 		dispatch(addItem(newItem));
-
 	}
 
 	return (
