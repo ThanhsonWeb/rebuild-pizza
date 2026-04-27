@@ -28,7 +28,7 @@ function Cart() {
 				</ul>
 			</div>
 
-			<div className="flex items-center gap-5  ">
+			<div className="flex items-center gap-5 mt-8 ">
 				<Button type="secondary" to="/order/new">
 					ORDER PIZZA
 				</Button>

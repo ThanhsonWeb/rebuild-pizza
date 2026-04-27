@@ -9,15 +9,17 @@ function CartItem({ item }) {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="flex gap-4 p-5 items-center justify-between  text-xl  border-b ">
-			<p>
+		<div className="md:flex gap-4 md:p-5 items-center justify-between  text-xl  border-b  pb-4 md:pb-0 mt-5 md:mt-0 ">
+			<p className="text-2xl text-left mt-5">
 				{quantity} x {name}
 			</p>
-			<span>${unitPrice}.00</span>
+			<div className="flex items-center md:gap-15 sm:gap-10 gap-5 mt-6 md:mt-0 ">
+				<span>${unitPrice}.00</span>
 
-			<UpdateItemQuantity  id={pizzaId} quantity={quantity}/>
+				<UpdateItemQuantity id={pizzaId} quantity={quantity} />
 
-			<Button onClick={() => dispatch(deleteItem(pizzaId))}>Delete</Button>
+				<Button onClick={() => dispatch(deleteItem(pizzaId))}>Delete</Button>
+			</div>
 		</div>
 	);
 }
