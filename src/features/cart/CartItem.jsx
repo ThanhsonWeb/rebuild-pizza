@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 
 function CartItem({ item }) {
 	const { name, quantity, unitPrice, pizzaId } = item;
-	
 
 	const dispatch = useDispatch();
 

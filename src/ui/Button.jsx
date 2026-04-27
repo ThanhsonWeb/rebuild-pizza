@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 function Button({ children, to, type = "primary", onClick }) {
 	const base =
-		" inline-block font-semibold rounded-full hover:scale-110  transition-all duration-400 cursor-pointer px-3 py-2";
+		" inline-block font-semibold hover:scale-110  transition-all duration-400 cursor-pointer px-3 py-2";
 	const style = {
-		primary: "  text-white  bg-amber-700",
-		secondary: " text-white  bg-orange-500 ",
-		third: " bg-amber-50 border ",
+		primary: "  rounded-full  text-white  bg-amber-700",
+		secondary: " text-white  bg-orange-400   ",
+		third: " rounded-full  bg-amber-50 border ",
 	};
 	const className = `${base}  ${style[type]}`;
 
