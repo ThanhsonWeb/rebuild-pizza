@@ -47,7 +47,21 @@ export const getTotalQuantity = (store) =>
 export const getTotalPrice = (store) =>
 	store.cart.cart.reduce((sum, item) => sum + item.unitPrice, 0);
 
-export const { addItem, clearCart, deleteItem, increaseQuantity,decreaseQuantity} =
-	cartSlice.actions;
+export const getCurrentQuantityById = (id) => (store) =>
+	store.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
+//getCurrentQuantityById  takes id as a parameter.
+
+// The inner function takes state as a parameter.
+
+// The inner function contains the logic to find the pizza item in the cart and return its quantity.
+
+
+export const {
+	addItem,
+	clearCart,
+	deleteItem,
+	increaseQuantity,
+	decreaseQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
