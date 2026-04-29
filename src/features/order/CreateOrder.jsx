@@ -1,75 +1,88 @@
 import Button from "../../ui/Button";
-import { Form, redirect } from "react-router-dom";
-import { createOrder } from "../../service/apiRestaurant";
+import { Form } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getCart } from "../cart/cartSlice";
+import EmptyCart from "../cart/EmptyCart";
+import { redirect } from "react-router-dom";
 
 function CreateOrder() {
-	const username = useSelector((store) => store.user.username);
+	const { username } = useSelector((store) => store.user);
+	const cart = useSelector(getCart);
+	console.log(cart);
 
+	if (!cart || cart.length === 0) return <EmptyCart />;
 	return (
 		<div className="md:p-10 p-6 flex flex-col justify-center">
 			<h2 className="text-left text-4xl md:text-5xl tracking-wide">
 				Ready to order ? let's go
 			</h2>
 			{/* b1 : use Form */}
-			<Form method="POST" className="mt-10 text-2xl md:text-3xl space-y-6 ">
+			<Form method="POST" action="/confirm" className="mt-10  space-y-6 ">
 				<div className="flex flex-col md:flex-row gap-6   ">
-					<label htmlFor="name" className="text-left">
+					<label className="text-left text-xl sm:text-2xl md:text-3xl ">
 						First Name
 					</label>
 					<input
 						type="text"
-						value={username}
-						id="name"
 						className="border px-4 py-2  text-xl w-[100%] md:w-[70%] ml-auto rounded-full "
 						name="customer"
+						defaultValue={username}
 						required
 					/>
 				</div>
 				<div className="flex  flex-col md:flex-row gap-6  ">
-					<label htmlFor="num" className="text-left">
+					<label className="text-left text-xl sm:text-2xl md:text-3xl whitespace-nowrap">
 						Phone Number
 					</label>
 					<input
 						type="tel"
-						id="num"
 						className="border px-4 py-2  text-xl w-[100%] md:w-[70%] ml-auto rounded-full "
 						name="phone"
 						required
 					/>
 				</div>
-				<div className="flex flex-col md:flex-row gap-6  ">
-					<label htmlFor="address" className="text-left">
-						Address
-					</label>
+				<div className="flex items-center justify-between flex-col md:flex-row gap-6  ">
+					<div className="w-full md:w-0 text-start ">
+						<label className="text-left text-xl sm:text-2xl md:text-3xl  ">
+							Address
+						</label>
+					</div>
+
 					<input
 						type="text"
-						id="address"
 						className="border px-4 py-2  text-xl w-[100%] md:w-[70%] ml-auto rounded-full "
 						name="address"
 						required
 					/>
+
+					<span className="absolute right-[5%]  ">
+						{/* b1: click button -> fetch */}
+						<Button
+							onClick={(e) => {
+								e.preventDefault();
+							}}
+						>
+							GET POSITION
+						</Button>
+					</span>
 				</div>
 
-				<Button>Order now</Button>
+				{/* <Button typee="submit">Order now</Button> */}
+				<button
+					className=" rounded-full  text-white  bg-amber-700 p-4"
+					type="submit"
+				>
+					Order now
+				</button>
 			</Form>
 		</div>
 	);
 }
 
-// b2: new form submit ->  call this action -> request send to the server
 export async function action({ request }) {
-	const formData = await request.formData(); //to extract the submitted values (name,number,address)
+	const formData = await request.formData();
 	const data = Object.fromEntries(formData);
-	// console.log(data); // name , number, address
-
-	const order = {
-		...data,
-	};
-
-	const newOrder = await createOrder(order);
-
-	return redirect(`/order/${newOrder.id}`);
+	return data; // this is what useActionData will read
 }
 
 export default CreateOrder;

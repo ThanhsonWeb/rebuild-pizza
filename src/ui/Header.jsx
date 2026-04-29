@@ -1,13 +1,30 @@
 import pizza from "../assets/img/pizza.jpg";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Navigation from "./Navigation";
 import Sidebar from "./Sidebar";
 import { useNavigate } from "react-router-dom";
 function Header() {
 	const [isOpen, setIsOpen] = useState(false);
-
+	const sidebarRef = useRef(null);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		function handleClickOutSide(e) {
+			if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+				setIsOpen(false);
+			}
+		}
+
+		if (isOpen) {
+			document.addEventListener("mousedown", handleClickOutSide);
+		} else {
+			document.removeEventListener("mousedown", handleClickOutSide);
+		}
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutSide);
+		};
+	}, [isOpen]);
 
 	return (
 		<div className=" p-5 flex items-center justify-between ">
@@ -15,7 +32,11 @@ function Header() {
 			<button onClick={() => setIsOpen(!isOpen)}>
 				<Bars3Icon className=" md:hidden h-12 w-12 text-amber-800" />
 			</button>
-			{isOpen && <Sidebar setIsOpen={setIsOpen} />}
+			{isOpen && (
+				<div ref={sidebarRef}>
+					<Sidebar setIsOpen={setIsOpen} />
+				</div>
+			)}
 
 			<img
 				src={pizza}

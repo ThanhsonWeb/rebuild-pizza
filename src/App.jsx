@@ -10,7 +10,7 @@ import OrderPage from "./features/order/OrderPage";
 import { loader as menuLoader } from "./features/menu/Menu";
 import Error from "./ui/Error";
 import { action as createOrderAction } from "./features/order/CreateOrder";
-import Order from "./features/order/Order";
+import OrderConfirm from "./features/order/OrderConfirm";
 function App() {
 	const router = createBrowserRouter([
 		{
@@ -48,8 +48,9 @@ function App() {
 					action: createOrderAction,
 				},
 				{
-					path: "/order/orderid",
-					element: <Order />,
+					path: "/confirm",
+					element: <OrderConfirm />,
+					action: createOrderAction,
 				},
 			],
 		},

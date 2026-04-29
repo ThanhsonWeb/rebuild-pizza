@@ -2,13 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	cart: [
-		{
-			pizzaId: 12,
-			name: "Mediterranean",
-			quantity: 2,
-			unitPrice: 16,
-			totalPrice: 32,
-		},
+		
 	],
 };
 
@@ -41,6 +35,8 @@ const cartSlice = createSlice({
 });
 
 // selector
+export const getCart = (store) => store.cart.cart;
+
 export const getTotalQuantity = (store) =>
 	store.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -51,10 +47,9 @@ export const getCurrentQuantityById = (id) => (store) =>
 	store.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
 //getCurrentQuantityById  takes id as a parameter.
 
-// The inner function takes state as a parameter.
+// The inner function takes "store" as a parameter.
 
 // The inner function contains the logic to find the pizza item in the cart and return its quantity.
-
 
 export const {
 	addItem,
