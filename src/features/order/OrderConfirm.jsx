@@ -1,11 +1,17 @@
 import { useSelector } from "react-redux";
 import { useActionData } from "react-router-dom";
 import EmptyOrder from "./EmptyOrder";
+import Button from "../../ui/Button";
+import OrderItem from "./OrderItem";
+import { getTotalPrice } from "../cart/cartSlice";
+
 function Order() {
 	const username = useSelector((store) => store.user.username);
+	const cart = useSelector((store) => store.cart.cart);
+	const totalPrice = useSelector(getTotalPrice);
+	console.log(cart);
 
 	const data = useActionData();
-	console.log(data);
 
 	if (!data) return <EmptyOrder />;
 
@@ -36,7 +42,29 @@ function Order() {
 				</p>
 			</div>
 			{/* summary */}
-			<div></div>
+			<div className="mt-5  ">
+				<h2 className="text-2xl text-center">Order Summary</h2>
+				<div>
+					{cart.map((item) => (
+						<OrderItem key={item.pizzaId} item={item} />
+					))}
+				</div>
+
+				<div className="text-right mt-3">
+					<p>Order Subtotal : ${totalPrice}</p>
+					<p>Delivery Fee: $5.00</p>
+					<h2 className="text-2xl">Total Amount : ${totalPrice + 5}</h2>
+				</div>
+			</div>
+
+			<div className="mt-5 text-xl">
+				<span >
+					<strong className="text-amber-800">Estimated Delivery Time:</strong> 35
+					minutes
+				</span>
+				<br />
+				<Button to="/menu">Back to Menu</Button>
+			</div>
 		</div>
 	);
 }

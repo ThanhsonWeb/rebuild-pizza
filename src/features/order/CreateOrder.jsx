@@ -3,7 +3,6 @@ import { Form } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCart } from "../cart/cartSlice";
 import EmptyCart from "../cart/EmptyCart";
-import { redirect } from "react-router-dom";
 
 function CreateOrder() {
 	const { username } = useSelector((store) => store.user);
